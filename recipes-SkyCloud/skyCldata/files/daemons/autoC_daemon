@@ -4,7 +4,7 @@
 #
 ### BEGIN INIT INFO
 # Provides:          autoC_daemon
-# Processname:        autoConfig
+# Processname:       autoConfig
 # Required-Start:     
 # Required-Stop:     
 # Default-Start:     S 2 

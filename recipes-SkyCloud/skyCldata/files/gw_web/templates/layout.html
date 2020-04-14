@@ -9,17 +9,13 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.4.1/css/bootstrap.min.css') }}">
   <script type="text/javascript" src="{{ url_for('static', filename='bootstrap-4.4.1/js/bootstrap.min.js') }}"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-
-<link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/font-awesome-animation.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/font-awesome-animation.min.css') }}">
   <script type="text/javascript" src="{{ url_for('static', filename='fontawesome/js/all.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.4.1.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}"></script>
 
   <script type="text/javascript">
-
-
   setInterval(function(){
       $.ajax({
             url: '/status',
@@ -39,30 +35,11 @@
                 console.log(text)
                 $label.html("<span class='badge badge-secondary'><i class='fa fa-heart faa-flash fa-1x' aria-hidden='true' ></i></span>"); 
               }
-}
-
-      });
+            }
+          });
       //$('table #tm').load('/status');
- },1000);
-
-
-
-
-
-
+  },1000);
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
 </head>
 <body>
   <dir class="container" id="_body">
@@ -75,7 +52,6 @@
     {% block updatefirmware %}{% endblock %}
     {% block baconInfo %}{% endblock %}
     {% block network %}{% endblock %}
-
     {% include 'footer.html' %}
   </dir>
 </body>

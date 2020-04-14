@@ -25,8 +25,8 @@ cp -r --no-dereference --preserve=mode,links -v ${WORKDIR}/drivers/* ${D}/lib/mo
 
 
 
-chown -R root:root ${D}/www/web/_netw/ble_read
-chmod -R 777 ${D}/www/web/_netw/ble_read
+#chown -R root:root ${D}/www/web/_netw/ble_read
+#chmod -R 777 ${D}/www/web/_netw/ble_read
 
 chown -R root:root ${D}/www/web/_netw/mqtt_post
 chmod -R 777 ${D}/www/web/_netw/mqtt_post
@@ -35,15 +35,15 @@ chown -R root:root ${D}/etc/init.d/hb_daemon
 chmod -R 777 ${D}/etc/init.d/hb_daemon
 chown -R root:root ${D}/etc/init.d/http_daemon
 chmod -R 777 ${D}/etc/init.d/http_daemon
-chown -R root:root ${D}/etc/init.d/logs_daemon
-chmod -R 777 ${D}/etc/init.d/logs_daemon
+chown -R root:root ${D}/etc/init.d/led_daemon
+chmod -R 777 ${D}/etc/init.d/led_daemon
 chown -R root:root ${D}/etc/init.d/flask_daemon
 chmod -R 777 ${D}/etc/init.d/flask_daemon
 chown -R root:root ${D}/etc/init.d/autoC_daemon
 chmod -R 777 ${D}/etc/init.d/autoC_daemon
 
-chown -R root:root ${D}/www/web/_autoConfig/gpio_led
-chmod -R 777 ${D}/www/web/_autoConfig/gpio_led
+#chown -R root:root ${D}/www/web/_autoConfig/gpio_led
+#chmod -R 777 ${D}/www/web/_autoConfig/gpio_led
 
 
 chown -R root:root ${D}/www/web/_netw/scan_ble.py

@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
-
+{% block title %}
+  Devices
+{% endblock %}
 {% block bacons %}
     
 <br><br>
@@ -21,12 +23,11 @@
   {% endfor %}
 
 </div>
-
-
 <br>
 <form action="/scan_ble">
 <button type="submit" value="" class="btn btn-primary">Scan BLE <i class="fas fa-search"></i></button><br><br>
 </form>
+  <div id="datahtml"  style="display: none">{{data}}</div>
   <table class="table table-hover">
     <thead>
         <tr>
@@ -40,40 +41,10 @@
             <th scope="col">ADD</th>
         </tr>
       </thead>
-      <tbody>
 
-      {% for key in data %}
-          {% if key != 'white_listed' %}
-          {% if key != 'hbeat' %}
-          {% set ble_data = r_obj.hgetall(key) %}
-          <tr>
-        <th scope="row">{{ loop.index }}</th>
-        <td>
-          <p class="badge badge-light">{% print(ble_data['uuid']) %}</p>
-        </td>
-        <td>
-          <p class="badge badge-light">{{ ble_data['mac'] }}</p>
-        </td>
-        <td>
-          <p class="badge badge-light">{% print(ble_data['rssi']) %}</p>
-        </td>
-        <td>
-          <p class="badge badge-light">0X{{ ble_data['maj'] }}:0X{{ ble_data['mina'] }}</p>
-        </td>
-        <td>
-          <p class="badge badge-light">{{ ble_data['adv'] }}</p>
-        </td>
-        <td>
-          <p class="badge badge-light">{% print(ble_data['tx']) %}</p>
-        </td>
-        <td>
-          <a href="/white_list_get/{{ ble_data['mac'] }}" class="badge badge-success">White List</a>
-        </td>
-      </tr>
-        {% endif %}
-        {% endif %}
-      {% endfor %} 
-
+      <tbody id='td_content'>
+      
+          <!-- {{ data[0] }} -->
     </tbody>
   </table>
 
@@ -154,13 +125,7 @@
 <script type="text/javascript">
 
 
-
-
-
 function addMac(){
-
-
-
     var data1 = $('form').serialize();
     var mac = document.getElementsByName("blacklisted");
     $.ajax({
@@ -176,17 +141,25 @@ function addMac(){
     }); 
   }
 
+
+var a = document.getElementById('datahtml').innerHTML
+var b = $.parseJSON( a ); 
+for(var i=0;i<b.length;i++){
+	var x  =b[i]
+	let y =  x.replace(/\'/g,'"');
+	var c = $.parseJSON(y); 
+	var order = i+1;
+	var num = (c.mac || 0).toString();
+    var result = '';
+    while (num.length > 2) {
+        result = ':' + num.slice(-2) + result;
+        num = num.slice(0, num.length - 2);
+    }
+    if (num) { result = num + result; }
+	$('#td_content').append("<tr><td scope='col'><p class='badge badge-light'>"+order+"</p></td><td scope='col'><p class='badge badge-light'>"+c.uuid+"</p></td><td scope='col'><p class='badge badge-light'>"+result+"</p></td><td scope='col'><p class='badge badge-light'>"+c.rssi+"</p></td><td scope='col'><p class='badge badge-light'>"+c.maj+"|"+c.mina+"</p></td><td scope='col'><p class='badge badge-light'>"+c.adv+"</p></td><td scope='col'><p class='badge badge-light'>"+c.tx+"</p></td><td scope='col'><a href='/white_list_get/"+c.mac+"' class='badge badge-success'>White List</a></td></tr>")
+}
 </script>
-
-
-
-
-
 </div>
-
-
-  
-
 {% endblock %}
 
 

@@ -1,0 +1,36 @@
+#! /bin/sh
+# /etc/init.d/logs_daemon
+
+#
+### BEGIN INIT INFO
+# Provides:          led_daemon
+# Processname:       led_daemon
+# Required-Start:    $network
+# Required-Stop:     $redis-server
+# Default-Start:     S 2 
+# Default-Stop:      0 1 6
+# Short-Description: LED BLINK 
+# Description:       LED.
+#                    http://SC.com
+### END INIT INFO
+#exec 1>/tmp/led_daemon.log 2>&1
+
+case "$1" in
+  start)
+    echo "Starting Logs Daemon...  "
+    # run application you want to start
+    python3 /www/web/_include/blink_led.py &
+    #return 0
+    ;;
+  stop)
+    echo "Stopping flask_daemon"
+    # kill application you want to stop
+    kill $(ps aux | grep "python3 /www/web/_include/blink_led.py" | grep -v grep | awk '{print $2}')
+    ;;
+  *)
+    echo "Usage: /etc/init.d/led_daemon  {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0

@@ -1,4 +1,4 @@
 {
-    "key": " 'Zp9KtocL6smw4h43A3ZqOg==')",
+    "key": " 'ZUbNJTmZ2MVOynkMCMTnkA==')",
     "auto_config": "yes"
 }

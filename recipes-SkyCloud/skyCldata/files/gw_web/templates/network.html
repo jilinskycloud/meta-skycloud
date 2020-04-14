@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
-
+{% block title %}
+  Network
+{% endblock %}
 {% block network %}
     
 <br><br>
@@ -44,7 +46,8 @@
         <h5><span class="badge badge-light">Serial No.</span></h5>
         <div class="form-row">
           <div class="col-xs-6">
-            <input type="text" name="serial_no" class="form-control" placeholder="heartbeat server ip" value="{{ d1['serial_no'] }}" required>
+            <input type="text" name="serial_no" class="form-control" placeholder="heartbeat server ip" style="color: red;" value="{{ d1['serial_no'] }}" required disabled="">
+            <input type="text" name="serial_no" class="form-control" placeholder="heartbeat server ip" style="color: red;" value="{{ d1['serial_no'] }}" required hidden>
           </div>
         </div><br>
         <div class="form-row">
@@ -127,7 +130,7 @@
         <h5><span class="badge badge-light">Serial No.</span></h5>
         <div class="form-row">
           <div class="col-xs-6">
-            <input type="text" name="w_serial_no" class="form-control" placeholder="heartbeat server ip" value="{{ d2['w_serial_no'] }}" required>
+            <input type="text" name="w_serial_no" class="form-control" placeholder="heartbeat server ip" style="color: red;" value="{{ d2['w_serial_no'] }}" required disabled>
           </div>
         </div><br>
         <div class="form-row">
@@ -188,85 +191,7 @@
       </form>
     </div>
   </div>
-  <!--
-  --------------------------------------------------------------------------------------------------------------
-  <div class="tab-pane fade show active container" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-    <div class="form-group"><br>
-      <form class="container" action = "/network" method = "POST">
-        <div class="form-row">
-          <div class="form-group form-check">
-            {% if d2['enable_post_data'] == 'on' %}
-              <input type="checkbox" class="form-check-input" id="wifi_hb" checked onclick="wifi_heartbeat()">
-            {% elif d2['enable_post_data'] == 'off' %}
-              <input type="checkbox" class="form-check-input" id="wifi_hb" onclick="wifi_heartbeat()">
-            {% endif %}
-            <label class="form-check-label" for="exampleCheck1">Enable Heartbeat</label>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group form-check">
-            <input type="hidden" name="hb_en" class="form-check-input" id="wifi_hb_val" value="{{ d2['hb_en'] }}">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-xs-6">
-            <input type="text" name="wifi_hb_ip" class="form-control" placeholder="heartbeat server ip" value="{{ d2['wifi_hb_ip'] }}">
-          </div>
-        </div><br>
-        <div class="form-row">
-          <div class="form-group form-check">
-            <input type="checkbox" name="wifi_en_post" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Enable post data</label>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-xs-5">
-            <input type="text" name="wifi_server_add" class="form-control" placeholder="server address" value="{{ d2['wifi_server_add'] }}">
-          </div>
-        </div><br>
-        <div class="form-row">
-          <div class="col-xs-5">
-            <input type="text" name="wifi_cache_size" class="form-control" placeholder="Cache Size"  value="{{ d2['wifi_cache_size'] }}">
-          </div>
-        </div><br>
-        <div class="form-row">
-          <div class="col-xs-5">
-            <input type="text" name="wifi_whitelist_Mac" class="form-control" placeholder="white list" value="{{ d2['wifi_whitelist_Mac'] }}" >
-          </div>
-        </div><br>
-        <div class="form-row">
-          <div class="col-xs-5">
-            <input type="text" name="wifi_rssi_range" class="form-control" placeholder="RSSI Range" value="{{ d2['wifi_rssi_range'] }}">
-          </div>
-        </div><br>
-        <div class="form-row">
-          <div class="col-xs-5">
-            <input type="text" name="wifi_data_interval" class="form-control" placeholder="Data Transmission Interval" value="{{ d2['wifi_data_interval'] }}">
-          </div>
-        </div><br>
-        <div class="form-row">
-          <div class="col-xs-5">
-            <input type="hidden" name="con_type" value="wifi" class="form-control" placeholder="Cache Size" value="{{ d2['con_type'] }}">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-5">
-            <label for="inputState">Protocol</label>
-            <select id="inputState" name="wifi_proto" class="form-control">
-              <option selected>{{ d2['wifi_proto'] }}</option>
-              <option>-----</option>
-              <option>MQTT</option>
-              <option>HTTP</option>
-            </select>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Apply & Save</button><br>
-      </form><br>
-    </div>
-  </div>
--->
 </div>
-
 
 <script type="text/javascript">
 function wifi_heartbeat() {
@@ -320,8 +245,6 @@ function wifi_post1() {
     $("#wifi_post_val").val("off");
   }
 }
-
-
 
 </script>
 {% endblock %}
